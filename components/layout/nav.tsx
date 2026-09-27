@@ -9,7 +9,7 @@ import { Container } from "@/components/ui/container";
 import { Mark } from "@/components/ui/icons";
 import { cx } from "@/lib/cx";
 
-export function Nav() {
+export function Nav({ resume }: { resume: boolean }) {
   const pathname = usePathname();
   const onHome = pathname === "/";
   const [sectionId, setSectionId] = useState<string | null>(null);
@@ -79,6 +79,16 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {resume && (
+            <a
+              href={site.resume.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-8 items-center rounded-md bg-fg px-3 text-[13px] font-medium text-canvas transition-colors hover:bg-white"
+            >
+              Resume
+            </a>
+          )}
           <a
             href={`mailto:${site.email}`}
             className="hidden h-8 items-center rounded-md border border-line-strong px-3 text-[13px] text-fg transition-colors hover:bg-raised sm:inline-flex"

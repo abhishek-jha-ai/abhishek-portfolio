@@ -33,8 +33,14 @@ export const site = {
     handle: "abhishek-jha-ai",
     href: "https://www.linkedin.com/in/abhishek-jha-ai",
   },
-  /** Drop a PDF at public/resume.pdf and the Resume button appears automatically. */
-  resume: { href: "/resume.pdf", file: "resume.pdf" },
+  /**
+   * Company-neutral flagship resume. Source: resume/resume.html (print to PDF with Chrome).
+   * The Resume buttons only render when this file exists in public/.
+   */
+  resume: {
+    href: "/Abhishek_Kumar_Jha_Senior_Software_AI_Infrastructure_Resume.pdf",
+    file: "Abhishek_Kumar_Jha_Senior_Software_AI_Infrastructure_Resume.pdf",
+  },
 } as const;
 
 export type NavItem = { label: string; id: string };

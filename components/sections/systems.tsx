@@ -1,5 +1,9 @@
-import { systems, type System } from "@/content/systems";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { employerSystems, products, shipped, type System } from "@/content/systems";
+import { GitHubIcon } from "@/components/ui/icons";
 import { Section } from "@/components/ui/section";
+import { StatusDot } from "@/components/ui/status-dot";
 import { TagList } from "@/components/ui/tag";
 import { cx } from "@/lib/cx";
 
@@ -23,6 +27,41 @@ function Improvement({ data }: { data: NonNullable<System["improvement"]> }) {
         </div>
       </div>
     </figure>
+  );
+}
+
+const NewTab = () => <span className="sr-only"> (opens in new tab)</span>;
+
+const quietLink = "inline-flex items-center gap-1.5 font-mono text-[12px] text-muted transition-colors hover:text-fg";
+
+function SystemLinks({ name, links }: { name: string; links: NonNullable<System["links"]> }) {
+  return (
+    <p className="flex flex-wrap items-center gap-x-5 gap-y-2">
+      {links.live && (
+        <a
+          href={links.live}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${name} live product (opens in new tab)`}
+          className="inline-flex items-center gap-2 text-[13.5px] font-medium text-fg underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-fg"
+        >
+          <StatusDot state="running" />
+          Live product
+          <ArrowUpRight aria-hidden className="size-3.5 text-muted" />
+        </a>
+      )}
+      {links.caseStudy && (
+        <Link href={links.caseStudy} className={quietLink}>
+          Case study <ArrowUpRight aria-hidden className="size-3.5" />
+        </Link>
+      )}
+      {links.github && (
+        <a href={links.github} target="_blank" rel="noopener noreferrer" className={quietLink}>
+          <GitHubIcon className="size-3.5" /> Code
+          <NewTab />
+        </a>
+      )}
+    </p>
   );
 }
 
@@ -62,17 +101,79 @@ function SystemCard({ system }: { system: System }) {
         {system.improvement && <Improvement data={system.improvement} />}
       </div>
 
-      <dl className={cx("mt-auto space-y-3 pt-7", system.wide && "md:mt-0 md:pt-0")}>
-        {system.groups.map((g) => (
-          <div key={g.label} className="grid gap-2 sm:grid-cols-[88px_1fr] sm:gap-3">
-            <dt className="pt-1 font-mono text-[10.5px] uppercase tracking-[0.14em] text-subtle">{g.label}</dt>
-            <dd>
-              <TagList items={g.items} />
-            </dd>
-          </div>
-        ))}
-      </dl>
+      {(system.groups || system.links) && (
+        <div className={cx("mt-auto pt-7", system.wide && "md:mt-0 md:pt-0")}>
+          {system.groups && (
+            <dl className="space-y-3">
+              {system.groups.map((g) => (
+                <div key={g.label} className="grid gap-2 sm:grid-cols-[88px_1fr] sm:gap-3">
+                  <dt className="pt-1 font-mono text-[10.5px] uppercase tracking-[0.14em] text-subtle">{g.label}</dt>
+                  <dd>
+                    <TagList items={g.items} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          )}
+          {system.links && (
+            <div className={cx(system.groups && "mt-6 border-t border-line pt-5")}>
+              <SystemLinks name={system.name} links={system.links} />
+            </div>
+          )}
+        </div>
+      )}
     </article>
+  );
+}
+
+function Shipped() {
+  return (
+    <div className="mt-14 rounded-xl border border-line bg-panel/60">
+      <h3 className="border-b border-line px-5 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-subtle sm:px-6">
+        Shipped &amp; live
+      </h3>
+      <ul className="grid sm:grid-cols-2 lg:grid-cols-3">
+        {shipped.map((item) => {
+          const body = (
+            <>
+              <span className="flex items-center gap-2 text-[14.5px] font-medium text-fg">
+                {item.live ? <StatusDot state="running" /> : <StatusDot state="idle" />}
+                {item.name}
+                {item.live && <span className="font-mono text-[10.5px] font-normal uppercase tracking-[0.12em] text-accent">Live</span>}
+              </span>
+              <span className="mt-1 flex items-center gap-1.5 pl-3.5 font-mono text-[11.5px] text-subtle transition-colors group-hover:text-muted">
+                {item.what} · {item.label}
+                <ArrowUpRight aria-hidden className="size-3 shrink-0" />
+              </span>
+            </>
+          );
+          const cls = "group flex h-full flex-col px-5 py-4 transition-colors hover:bg-raised/60 sm:px-6";
+          return (
+            <li key={item.name} className="border-b border-line last:border-b-0 sm:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0">
+              {item.external ? (
+                <a href={item.href} target="_blank" rel="noopener noreferrer" className={cls}>
+                  {body}
+                  <NewTab />
+                </a>
+              ) : (
+                <Link href={item.href} className={cls}>
+                  {body}
+                </Link>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
+function Group({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="mt-14">
+      <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-subtle">{label}</h3>
+      {children}
+    </div>
   );
 }
 
@@ -83,13 +184,25 @@ export function Systems() {
       index="02"
       label="Systems"
       title="Shipped to real users."
-      lede="Beyond the flagship — an AI product, a multi-tenant SaaS platform, healthcare data systems and enterprise microservices."
+      lede="Beyond the flagship — live AI and SaaS products you can open today, plus the healthcare, platform and enterprise systems I built inside companies."
     >
-      <div className="mt-14 grid gap-4 md:grid-cols-2">
-        {systems.map((s) => (
-          <SystemCard key={s.id} system={s} />
-        ))}
-      </div>
+      <Shipped />
+
+      <Group label="Products">
+        <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {products.map((s) => (
+            <SystemCard key={s.id} system={s} />
+          ))}
+        </div>
+      </Group>
+
+      <Group label="Inside companies">
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+          {employerSystems.map((s) => (
+            <SystemCard key={s.id} system={s} />
+          ))}
+        </div>
+      </Group>
     </Section>
   );
 }

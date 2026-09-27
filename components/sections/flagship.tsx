@@ -3,7 +3,6 @@ import { sdlc } from "@/content/sdlc";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { StatusDot } from "@/components/ui/status-dot";
-import { GitHubCard, RepoIntelCard, TraceabilityCard } from "@/components/sdlc/capability-cards";
 import { Lifecycle } from "@/components/sdlc/lifecycle";
 import { ModuleTabs } from "@/components/sdlc/module-tabs";
 import { Planes } from "@/components/sdlc/planes";
@@ -25,7 +24,8 @@ export function FlagshipIntro({ as: Heading = "h2", id }: { as?: "h1" | "h2"; id
         <p className="mt-5 text-balance text-[clamp(1.25rem,2.3vw,1.6rem)] leading-snug tracking-[-0.02em] text-fg/85">
           {sdlc.positioning}
         </p>
-        <p className="mt-5 max-w-2xl text-pretty text-[16px] leading-relaxed text-muted">{sdlc.summary}</p>
+        <p className="mt-5 max-w-2xl text-pretty text-[16px] leading-relaxed text-muted">{sdlc.problem}</p>
+        <p className="mt-4 max-w-2xl text-pretty text-[16px] leading-relaxed text-muted">{sdlc.summary}</p>
         <p className="mt-6 font-mono text-[12px] text-subtle">
           {sdlc.role} <span className="text-line-strong">·</span> {sdlc.period}
         </p>
@@ -68,16 +68,10 @@ export function Flagship() {
           <ModuleTabs modules={sdlc.modules} />
         </div>
 
-        <div className="mt-24 grid gap-4 lg:grid-cols-3">
-          <TraceabilityCard />
-          <RepoIntelCard />
-          <GitHubCard />
-        </div>
-
-        <div className="mt-10 flex flex-col gap-5 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-5 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-xl text-[14px] leading-relaxed text-muted">
-            Python · FastAPI · SQLAlchemy 2 async · PostgreSQL · Vue 3 · AWS ECS Fargate · GitHub Actions — full stack,
-            architecture and infrastructure in the case study.
+            Repository intelligence, requirement-to-PR traceability, GitHub delivery, the AWS deployment and the full
+            stack — in the case study.
           </p>
           <ButtonLink href={`/systems/${sdlc.slug}`} variant="secondary" className="shrink-0 self-start sm:self-auto">
             Read the case study

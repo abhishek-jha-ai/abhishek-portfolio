@@ -16,7 +16,22 @@ export function Experience() {
               <div>
                 <h3 className="text-[16px] font-medium leading-snug tracking-[-0.01em] text-fg">
                   {role.title}
-                  <span className="text-muted"> · {role.company}</span>
+                  <span className="text-muted">
+                    {" · "}
+                    {role.href ? (
+                      <a
+                        href={role.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-line-strong underline-offset-4 transition-colors hover:text-fg hover:decoration-subtle"
+                      >
+                        {role.company}
+                        <span className="sr-only"> (opens in new tab)</span>
+                      </a>
+                    ) : (
+                      role.company
+                    )}
+                  </span>
                 </h3>
                 {role.summary && <p className="mt-1.5 max-w-2xl text-pretty text-[14px] leading-relaxed text-subtle">{role.summary}</p>}
               </div>

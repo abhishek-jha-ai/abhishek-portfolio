@@ -25,6 +25,9 @@ export const sdlc = {
   positioning: "AI agents that can ship software — without giving up human control.",
   summary:
     "A governed software-delivery platform. Agents take work from requirements through planning, implementation and testing to a GitHub pull request, while approval gates, guardrails, traceability and an audit trail keep humans in charge of what ships.",
+  /** Why it exists — framing only, no claimed outcomes. */
+  problem:
+    "Coding agents can write code, but a team can't hand them delivery unless every run is recoverable, every change is bounded and every decision is auditable. This platform exists to make autonomous delivery safe to operate.",
   metrics: [
     { value: "~190", label: "REST endpoints" },
     { value: "700+", label: "automated tests" },

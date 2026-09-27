@@ -19,7 +19,7 @@ export function Contact({ index = "05" }: { index?: string }) {
           id="contact-title"
           className="mt-6 max-w-4xl text-balance text-[clamp(2.5rem,6.4vw,4.75rem)] font-medium leading-[0.98] tracking-[-0.045em]"
         >
-          Have something difficult to build?
+          Building something ambitious?
         </h2>
         <p className="mt-6 max-w-xl text-pretty text-[17px] leading-relaxed text-muted">
           I&apos;m most useful where AI meets production — agent runtimes, orchestration, guardrails, platform APIs and the

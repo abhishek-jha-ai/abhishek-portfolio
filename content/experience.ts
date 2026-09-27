@@ -1,5 +1,7 @@
 export type Role = {
   company: string;
+  /** Company website — context for where the work happened, not ownership of the product. */
+  href?: string;
   title: string;
   period: string;
   current?: boolean;
@@ -9,6 +11,7 @@ export type Role = {
 export const experience: Role[] = [
   {
     company: "Sudo Programmer Inc.",
+    href: "https://sudoprogrammer.com/",
     title: "Founder & Senior Software / AI Platform Engineer",
     period: "2025 — Present",
     current: true,
@@ -23,6 +26,7 @@ export const experience: Role[] = [
   },
   {
     company: "Braintree Health",
+    href: "https://www.braintreehealth.com/",
     title: "Software Engineer Intern / Team Lead",
     period: "Nov 2024 — Jun 2025",
     summary: "Healthcare data on Java and Spring Boot across HL7, FHIR and DICOM. Took a data-processing workflow from 2–3 weeks to ~1.5 hours.",

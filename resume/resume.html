@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Abhishek Kumar Jha — Resume</title>
+<meta name="author" content="Abhishek Kumar Jha">
+<style>
+  @page { size: Letter; margin: 0.32in 0.5in 0.28in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 9pt; line-height: 1.25; color: #1a1a1a; }
+  a { color: inherit; text-decoration: none; }
+  header { text-align: center; }
+  h1 { font-size: 18pt; font-weight: 600; letter-spacing: -0.01em; }
+  .headline { margin-top: 3pt; font-size: 10.5pt; font-weight: 500; color: #333; }
+  .contact { margin-top: 4pt; font-size: 9pt; color: #444; }
+  .contact span + span::before { content: "·"; margin: 0 6pt; color: #999; }
+  h2 { margin-top: 6pt; padding-bottom: 2pt; border-bottom: 0.75pt solid #999; font-size: 9.5pt; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .summary { margin-top: 4pt; }
+  .skills { margin-top: 4pt; }
+  .skills p + p { margin-top: 1.5pt; }
+  .skills b, .role b { font-weight: 600; }
+  .job { margin-top: 4pt; break-inside: avoid; }
+  .role { display: flex; justify-content: space-between; gap: 12pt; }
+  .role .when { white-space: nowrap; color: #444; }
+  .title { font-style: italic; color: #333; }
+  ul { margin-top: 2pt; padding-left: 13pt; }
+  li { margin-top: 0.5pt; padding-left: 2pt; }
+  li b { font-weight: 600; }
+  .compact { margin-top: 4pt; }
+  .compact p + p { margin-top: 2pt; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Abhishek Kumar Jha</h1>
+  <p class="headline">Senior Software Engineer | Backend &amp; AI Infrastructure | Python · Distributed Systems · APIs</p>
+  <p class="contact">
+    <span>Florida | Open to Relocation</span>
+    <span><a href="mailto:abhishek.jha0410@gmail.com">abhishek.jha0410@gmail.com</a></span>
+    <span><a href="https://www.linkedin.com/in/abhishek-jha-ai">linkedin.com/in/abhishek-jha-ai</a></span>
+    <span><a href="https://github.com/abhishek-jha-ai">github.com/abhishek-jha-ai</a></span>
+  </p>
+</header>
+
+<h2>Professional Summary</h2>
+<p class="summary">Senior Software Engineer with 8+ years of experience building scalable backend systems, distributed platforms, developer-facing APIs, and production AI infrastructure. Hands-on experience designing agent orchestration runtimes, AI guardrails, observability, and cloud-native systems using Python/FastAPI, Java/Spring Boot, PostgreSQL, AWS, Docker, and Kubernetes. Experienced taking complex systems from architecture through deployment, testing, monitoring, and production operation.</p>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <p><b>Backend &amp; Platform:</b> Python, FastAPI, Java, Spring Boot, TypeScript, Node.js, REST APIs, GraphQL, Distributed Systems, Microservices, Workflow Orchestration</p>
+  <p><b>AI Infrastructure:</b> LLMs, GenAI, AI Agents, Agentic Workflows, Tool Calling, RAG, Model Routing, AI Guardrails, Retrieval</p>
+  <p><b>Cloud &amp; Infrastructure:</b> AWS, ECS Fargate, ALB, ECR, RDS, Docker, Kubernetes, GitHub Actions, Jenkins, CI/CD</p>
+  <p><b>Data:</b> PostgreSQL, SQL, SQLAlchemy, Alembic, Data Integrations</p>
+  <p><b>Reliability &amp; Quality:</b> Pytest, Vitest, Playwright, Automated Testing, Observability, Monitoring, Splunk, Root-Cause Analysis, Production Troubleshooting</p>
+</div>
+
+<h2>Professional Experience</h2>
+
+<div class="job">
+  <div class="role"><span><b>Sudo Programmer Inc.</b> — <span class="title">Founder &amp; Senior Software / AI Platform Engineer (Concurrent Venture)</span></span><span class="when">2025 – Present</span></div>
+  <ul>
+    <li><b>Agentic SDLC Platform:</b> architected and built a governed AI platform (Python/FastAPI, PostgreSQL, AWS) that orchestrates multi-step agent workflows from requirements through code generation, testing, and GitHub pull requests, with human approval gates and end-to-end traceability.</li>
+    <li>Designed a fault-tolerant distributed execution runtime with scheduling, lease-based workers, DAG orchestration, checkpoint recovery, and pause/resume/replay/fork capabilities, separating deterministic execution from LLM-driven decision making.</li>
+    <li>Built guardrails and governance controls for AI-generated changes, including scoped file access, secret detection, architecture-contract enforcement, model routing, retry policies, per-run cost limits, and operational telemetry.</li>
+    <li>Delivered ~190 REST APIs and 700+ automated tests across Pytest, Vitest, and Playwright; shipped containerized services through GitHub Actions to AWS ECS Fargate, ALB, and RDS.</li>
+    <li><b>PlanCraft AI:</b> built and launched an AI productivity platform using Python, FastAPI, PostgreSQL, AWS, LLMs, RAG, tool calling, and agentic workflows, serving 1,000+ users.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="role"><span><b>CACI International</b>, Remote — <span class="title">Senior Java Full Stack Developer</span></span><span class="when">Jul 2025 – Present</span></div>
+  <ul>
+    <li>Design and operate Java/Spring Boot microservices and REST APIs for distributed production systems, contributing to API architecture, security, deployment, and reliability.</li>
+    <li>Containerize services with Docker, deploy through Kubernetes environments, and maintain CI/CD workflows using Jenkins and Git, with security via Spring Security, OAuth 2.0, and JWT.</li>
+    <li>Diagnose production incidents using application logs and Splunk monitoring data, performing root-cause analysis and reliability improvements.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="role"><span><b>Braintree Health</b>, Corpus Christi, TX — <span class="title">Software Engineer Intern / Team Lead</span></span><span class="when">Nov 2024 – Jun 2025</span></div>
+  <ul>
+    <li>Built Java/Spring Boot REST API services for complex healthcare data integrations (HL7, FHIR, DICOM) and resolved production data-processing issues, reducing a key workflow from 2–3 weeks to ~1.5 hours.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="role"><span><b>Eruvaka Technology</b>, India — <span class="title">Java Full Stack Developer / Team Lead</span></span><span class="when">Nov 2021 – Aug 2024</span></div>
+  <ul>
+    <li>Led and mentored engineers while designing backend services and APIs (TypeScript, Node.js, GraphQL, REST) for a distributed platform serving 20,000+ users.</li>
+    <li>Collaborated with backend and data-science teams to integrate ML-driven capabilities, including growth prediction and harvest optimization, into production systems.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="role"><span><b>Chubb Insurance / Accenture</b>, India — <span class="title">Java Full Stack Developer / Software Engineer</span></span><span class="when">Jul 2019 – Nov 2021</span></div>
+  <ul>
+    <li>Designed and delivered enterprise Java backend services and APIs, reducing page-load times from ~10–12 seconds to 3–4 seconds and delivering a major platform approximately one month ahead of schedule.</li>
+  </ul>
+</div>
+
+<h2>Additional Experience</h2>
+<div class="compact">
+  <p><b>Xenovex Technologies</b> — Java Developer (Jan 2018 – Jun 2019): Built enterprise Java applications, backend services, and API integrations across the software development lifecycle.</p>
+</div>
+
+<h2>Education &amp; Certifications</h2>
+<div class="compact">
+  <p>M.S. Computer Science, Texas A&amp;M University–Corpus Christi · B.Tech Computer Software Engineering, SRM Institute of Science &amp; Technology</p>
+  <p>AWS Certified Cloud Practitioner · Databricks Fundamentals · 2× Best Performer Award — Accenture</p>
+</div>
+</body>
+</html>
